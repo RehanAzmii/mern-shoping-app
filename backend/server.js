@@ -5,6 +5,7 @@ const dotenv = require("dotenv");
 const connectDb = require("../backend/config/config");
 const color = require("colors");
 const productRoutes = require("./routes/productRoutes");
+const usersRoutes = require("./routes/UserRoutes");
 // dotnv confiq
 dotenv.config();
 
@@ -14,8 +15,12 @@ connectDb();
 //res object
 const app = express();
 
+// middleware bodyparser
+app.use(express.json());
+
 // productRoutes
 app.use("/api", productRoutes);
+app.use("/api/users", usersRoutes);
 
 // middleware
 app.use(errorHandler);

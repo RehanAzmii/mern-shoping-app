@@ -1,7 +1,11 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { LinkContainer } from "react-router-bootstrap";
 const Header = () => {
+  const cart = useSelector((state) => state.cart);
+  const { cartItems } = cart;
+  console.log(cartItems);
   return (
     <>
       <Navbar bg="dark" data-bs-theme="dark">
@@ -13,10 +17,10 @@ const Header = () => {
             <LinkContainer to={"/cart"}>
               <Nav.Link>
                 <i className="fas fa-shopping-cart"></i>
-                &nbsp; cart
+                &nbsp; cart {cartItems.length}
               </Nav.Link>
             </LinkContainer>
-            <LinkContainer to={"/singin"}>
+            <LinkContainer to={"/login"}>
               <Nav.Link>
                 <i className="fas fa-user"></i>
                 &nbsp; singin
