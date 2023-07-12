@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { addToCart, removeToCart } from "../action/cartAction";
-import { NavLink, useLocation, useParams } from "react-router-dom";
+import { NavLink, useLocation, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Row,
@@ -14,6 +14,7 @@ import {
 } from "react-bootstrap";
 import Message from "../components/shared/Message";
 const CartProduct = () => {
+  const navigate = useNavigate();
   const params = useParams();
   const search = useLocation().search;
   const productId = params.id;
@@ -31,6 +32,10 @@ const CartProduct = () => {
 
   const removeFromCartHandler = (id) => {
     dispatch(removeToCart(id));
+  };
+
+  const checkout = () => {
+    navigate("/shipping");
   };
 
   return (
@@ -106,7 +111,7 @@ const CartProduct = () => {
                 type="button"
                 className="btn-block"
                 disabled={cartItems.length === 0}
-                // onClick={checkout}
+                onClick={checkout}
               >
                 Proceed to checkOut
               </Button>
