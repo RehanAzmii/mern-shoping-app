@@ -6,6 +6,7 @@ const connectDb = require("../backend/config/config");
 const color = require("colors");
 const productRoutes = require("./routes/productRoutes");
 const usersRoutes = require("./routes/UserRoutes");
+const orderRoutes = require("./routes/orderRoutes");
 // dotnv confiq
 dotenv.config();
 
@@ -21,6 +22,10 @@ app.use(express.json());
 // productRoutes
 app.use("/api", productRoutes);
 app.use("/api/users", usersRoutes);
+app.use("/api/orders", orderRoutes);
+app.get("/api/config/paypal", (req, res) => {
+  res.send(process.env.PAYPAL_CLIENT_ID);
+});
 
 // middleware
 app.use(errorHandler);

@@ -2,8 +2,8 @@ const mongoose = require("mongoose");
 
 const orderSchema = new mongoose.Schema(
   {
-    User: {
-      type: mongoose.Schema.Types.ObjectId,
+    user: {
+      type: mongoose.ObjectId,
       require: true,
       ref: "User",
     },
@@ -26,7 +26,7 @@ const orderSchema = new mongoose.Schema(
           require: true,
         },
         Product: {
-          type: mongoose.Schema.Types.ObjectId,
+          type: mongoose.ObjectId,
           require: true,
           ref: "Product",
         },
@@ -50,9 +50,14 @@ const orderSchema = new mongoose.Schema(
         require: true,
       },
     },
-    payment: {
+    paymentMethod: {
       type: String,
       require: true,
+    },
+    itemsPrice: {
+      type: Number,
+      require: true,
+      default: 0.0,
     },
     paymentResult: {
       id: { type: String },

@@ -95,7 +95,7 @@ const ProductDetails = () => {
                 )}
                 <ListGroupItem>
                   <Button
-                    className="btn-block "
+                    className=" btn btn-block"
                     type="button"
                     onClick={addToCardHandler}
                   >
